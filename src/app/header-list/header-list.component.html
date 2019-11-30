@@ -1,0 +1,4 @@
+<ul>
+  <li *ngFor="let header of headers | async | keyvalue"><b>{{header.key}}:</b><span
+    class="header-value">{{header.value}}</span></li>
+</ul>
