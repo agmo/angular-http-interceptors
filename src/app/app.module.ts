@@ -3,9 +3,9 @@ import {NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {AuthInterceptor} from './http-interceptors/auth-interceptor';
+import {HttpClientModule} from '@angular/common/http';
 import {HeaderListComponent} from './header-list/header-list.component';
+import {httpInterceptorProviders} from './http-interceptors';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,7 @@ import {HeaderListComponent} from './header-list/header-list.component';
     HttpClientModule
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+    httpInterceptorProviders
   ],
   bootstrap: [AppComponent]
 })
