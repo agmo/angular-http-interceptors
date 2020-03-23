@@ -8,3 +8,9 @@ app.listen(3000, () => {
 app.get('/api/test', (req, res) => {
   res.send({headers: req.headers});
 });
+
+// Error logging
+app.post('/api/log', (req, res) => {
+  // noop
+  res.status(200).end();
+});

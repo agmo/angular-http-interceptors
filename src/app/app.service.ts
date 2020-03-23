@@ -17,4 +17,8 @@ export class AppService {
       return this.httpClient.get('/api/test');
     }
   }
+
+  simulateError() {
+    return this.httpClient.get('/noop');
+  }
 }

@@ -1,19 +1,30 @@
 <main>
   <div>
-    <p>Click here to send an Http request that passes through an HTTP interceptor.</p>
-    <p>The interceptor appends an <b>Authorization</b> header.</p>
-    <button (click)="error = '';sendViaInterceptor()">
-      Send
-    </button>
-    <app-header-list [headers]="customHeaders$"></app-header-list>
+    <h1>HTTP Interceptor</h1>
+    <div>
+      <p>Click here to send an Http request that passes through an HTTP interceptor.</p>
+      <p>The interceptor appends an <b>Authorization</b> header.</p>
+      <button (click)="error = '';sendViaInterceptor()">
+        Send
+      </button>
+      <app-header-list [headers]="customHeaders$"></app-header-list>
+    </div>
+
+    <div class="m-t-l">
+      <p>Click here to send an Http request that bypasses the interceptor.</p>
+      <button (click)="error = '';sendBypassingInterceptor()">
+        Send
+      </button>
+      <app-header-list [headers]="regularHeaders$"></app-header-list>
+    </div>
   </div>
 
-  <div class="m-t-l">
-    <p>Click here to send an Http request that bypasses the interceptor.</p>
-    <button (click)="error = '';sendBypassingInterceptor()">
-      Send
-    </button>
-    <app-header-list [headers]="regularHeaders$"></app-header-list>
+  <div>
+    <h1>Error Handler</h1>
+    <p>The default implementation of Angular's ErrorHandler prints error messages to the console.</p>
+    <p>A custom handler intercepts error handling and sends an error to the backend server. Open the DevTools and
+    click the Network tab to see the request that is sent from the error handler.</p>
+    <button (click)="simulateError()">Generate an error</button>
   </div>
 
   <div class="error" *ngIf="error">

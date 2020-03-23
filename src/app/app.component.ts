@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {AppService} from './app.service';
-import {Observable, of} from 'rxjs';
+import {Observable, throwError} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 
 interface IHeaderRes {
@@ -35,8 +35,12 @@ export class AppComponent {
         catchError(err => {
           this.error = err.message;
 
-          return of({});
+          return throwError(err);
         })
       );
+  }
+
+  simulateError() {
+    this.appService.simulateError().subscribe();
   }
 }
