@@ -4,7 +4,7 @@
     <div>
       <p>Click here to send an Http request that passes through an HTTP interceptor.</p>
       <p>The interceptor appends an <b>Authorization</b> header.</p>
-      <button (click)="error = '';sendViaInterceptor()">
+      <button (click)="sendViaInterceptor()">
         Send
       </button>
       <app-header-list [headers]="customHeaders$"></app-header-list>
@@ -12,7 +12,7 @@
 
     <div class="m-t-l">
       <p>Click here to send an Http request that bypasses the interceptor.</p>
-      <button (click)="error = '';sendBypassingInterceptor()">
+      <button (click)="sendBypassingInterceptor()">
         Send
       </button>
       <app-header-list [headers]="regularHeaders$"></app-header-list>
@@ -25,11 +25,6 @@
     <p>A custom handler intercepts error handling and sends an error to the backend server. Open the DevTools and
     click the Network tab to see the request that is sent from the error handler.</p>
     <button (click)="simulateError()">Generate an error</button>
-  </div>
-
-  <div class="error" *ngIf="error">
-    <p>There was an error. Make sure the server is up and running and try again.</p>
-    <p>{{error}}</p>
   </div>
 
   <router-outlet></router-outlet>

@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {AppService} from './app.service';
 import {Observable, throwError} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
+import {ToastrService} from 'ngx-toastr';
 
 interface IHeaderRes {
   headers: any;
@@ -14,10 +15,9 @@ interface IHeaderRes {
 })
 export class AppComponent {
   customHeaders$: Observable<any>;
-  error: string;
   regularHeaders$: Observable<any>;
 
-  constructor(private appService: AppService) {
+  constructor(private appService: AppService, private toastrService: ToastrService) {
   }
 
   sendBypassingInterceptor() {
@@ -33,7 +33,7 @@ export class AppComponent {
       .pipe(
         map((data: IHeaderRes) => data.headers),
         catchError(err => {
-          this.error = err.message;
+          this.toastrService.error(`There was an error. Make sure the server is up and running and try again. ${err.message}`);
 
           return throwError(err);
         })

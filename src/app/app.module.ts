@@ -7,6 +7,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {HeaderListComponent} from './header-list/header-list.component';
 import {httpInterceptorProviders} from './http-interceptors';
 import {CustomErrorHandler} from './error-handler/custom-error-handler';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ToastrModule} from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import {CustomErrorHandler} from './error-handler/custom-error-handler';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     {provide: ErrorHandler, useClass: CustomErrorHandler},
