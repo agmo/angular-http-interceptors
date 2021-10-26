@@ -2,8 +2,10 @@
   <div>
     <h1>HTTP Interceptor</h1>
     <div>
-      <p>Click here to send an Http request that passes through an HTTP interceptor.</p>
-      <p>The interceptor appends an <b>Authorization</b> header.</p>
+      <p>Click here to send an Http request that passes through an HTTP interceptor and a caching interceptor.</p>
+      <p>The HTTP interceptor appends an <b>Authorization</b> header.</p>
+      <p>The caching interceptor stores cached responses in indexedDB. A response expires in 3 minutes.
+        (See the Network tab in Developer Tools.)</p>
       <button (click)="sendViaInterceptor()">
         Send
       </button>

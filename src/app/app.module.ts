@@ -9,6 +9,7 @@ import {httpInterceptorProviders} from './http-interceptors';
 import {CustomErrorHandler} from './error-handler/custom-error-handler';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToastrModule} from 'ngx-toastr';
+import {DEFAULT_CONFIG, Driver, NgForageOptions} from 'ngforage';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,16 @@ import {ToastrModule} from 'ngx-toastr';
   ],
   providers: [
     {provide: ErrorHandler, useClass: CustomErrorHandler},
-    httpInterceptorProviders
+    httpInterceptorProviders,
+    {
+      provide: DEFAULT_CONFIG,
+      useValue: {
+        name: 'angular-http-interceptors',
+        driver: [ // defaults to indexedDB -> webSQL -> localStorage
+          Driver.INDEXED_DB
+        ]
+      } as NgForageOptions
+    }
   ],
   bootstrap: [AppComponent]
 })
