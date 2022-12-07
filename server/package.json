@@ -4,6 +4,6 @@
   "description": "A demo server to test HTTP calls that pass through Angular HTTP interceptors.",
   "main": "index.js",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.18.2"
   }
 }
